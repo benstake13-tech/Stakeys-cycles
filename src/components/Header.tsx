@@ -36,8 +36,9 @@ export default function Header() {
     }`;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-ink-950/85 backdrop-blur-xl">
-      <Container className="flex h-16 items-center justify-between gap-3 lg:h-18">
+    <>
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-ink-950/85 backdrop-blur-xl">
+        <Container className="flex h-16 items-center justify-between gap-3 lg:h-18">
         <Link to="/" className="flex min-w-0 items-center gap-3">
           <img
             src="/images/logo.png"
@@ -101,8 +102,11 @@ export default function Header() {
           </button>
         </div>
       </Container>
+      </header>
 
-      {/* Mobile / tablet drawer */}
+      {/* Mobile / tablet drawer. Rendered outside <header>: the header's
+          backdrop-blur makes it the containing block for fixed children, so a
+          fixed drawer inside it collapses to zero height. */}
       {open && (
         <div
           id="mobile-menu"
@@ -142,6 +146,6 @@ export default function Header() {
           </Container>
         </div>
       )}
-    </header>
+    </>
   );
 }
