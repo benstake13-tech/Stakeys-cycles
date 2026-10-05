@@ -75,14 +75,20 @@ export default function Header() {
               </span>
             )}
           </Link>
-          <Button href={TEL_HREF} variant="secondary" className="hidden md:inline-flex">
-            <PhoneIcon className="h-4 w-4" />
-            Call us out
-          </Button>
-          <Button to="/book" className="hidden sm:inline-flex">
-            Book online
-            <ArrowRightIcon className="h-4 w-4" />
-          </Button>
+          {/* Wrapper spans control visibility: Button's own display utility
+              cannot be overridden by `hidden` from the caller. */}
+          <span className="hidden md:contents">
+            <Button href={TEL_HREF} variant="secondary">
+              <PhoneIcon className="h-4 w-4" />
+              Call us out
+            </Button>
+          </span>
+          <span className="hidden sm:contents">
+            <Button to="/book">
+              Book online
+              <ArrowRightIcon className="h-4 w-4" />
+            </Button>
+          </span>
           <button
             type="button"
             aria-label={open ? 'Close menu' : 'Open menu'}
