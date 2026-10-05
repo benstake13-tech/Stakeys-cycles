@@ -37,10 +37,10 @@ export default function JoinTeamPage() {
       <PageHero
         title="Join the Stakey's Cycles team"
         intro="Turn your skills into a mobile business. We're looking for independent mechanics to join our city-wide call-out team."
-        image="/images/gallery-1.jpg"
+        image="/images/workshop-1.jpg"
       />
 
-      <Container className="py-14">
+      <Container className="py-12 sm:py-14">
         <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
           <div>
             <h2 className="text-2xl font-bold text-white">

@@ -27,15 +27,15 @@ type ButtonProps = {
 
 const variants = {
   primary:
-    'bg-brand-500 text-ink-950 hover:bg-brand-400 focus-visible:outline-brand-400 font-semibold shadow-lg shadow-brand-500/20',
+    'bg-brand-500 text-ink-950 hover:bg-brand-400 focus-visible:outline-brand-400 font-semibold shadow-lg shadow-brand-500/25',
   secondary:
-    'border border-white/15 bg-white/5 text-white hover:bg-white/10 focus-visible:outline-white/40',
+    'border border-white/15 bg-white/5 text-white hover:border-white/30 hover:bg-white/10 focus-visible:outline-white/40',
   ghost: 'text-brand-300 hover:text-brand-200 focus-visible:outline-brand-400',
 };
 
 const sizes = {
-  md: 'px-5 py-2.5 text-sm',
-  lg: 'px-7 py-3.5 text-base',
+  md: 'min-h-11 px-5 py-2.5 text-sm',
+  lg: 'min-h-12 px-6 py-3.5 text-base sm:px-7',
 };
 
 export function Button({
@@ -47,7 +47,7 @@ export function Button({
   className = '',
   external,
 }: ButtonProps) {
-  const cls = `inline-flex items-center justify-center gap-2 rounded-full transition focus-visible:outline-2 focus-visible:outline-offset-2 ${variants[variant]} ${sizes[size]} ${className}`;
+  const cls = `inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-full transition duration-200 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-60 ${variants[variant]} ${sizes[size]} ${className}`;
 
   if (to) {
     return (
@@ -92,10 +92,12 @@ export function SectionHeading({
   return (
     <div className={center ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl'}>
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+      <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
         {title}
       </h2>
-      {intro && <p className="mt-4 text-base leading-relaxed text-slate-400">{intro}</p>}
+      {intro && (
+        <p className="mt-4 text-base leading-relaxed text-slate-400">{intro}</p>
+      )}
     </div>
   );
 }
@@ -103,13 +105,15 @@ export function SectionHeading({
 export function Card({
   children,
   className = '',
+  hover = false,
 }: {
   children: ReactNode;
   className?: string;
+  hover?: boolean;
 }) {
   return (
     <div
-      className={`rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur ${className}`}
+      className={`surface rounded-2xl p-6 ${hover ? 'surface-hover' : ''} ${className}`}
     >
       {children}
     </div>
@@ -120,10 +124,12 @@ export function PageHero({
   title,
   intro,
   image,
+  children,
 }: {
   title: string;
   intro?: string;
   image?: string;
+  children?: ReactNode;
 }) {
   return (
     <header className="relative overflow-hidden border-b border-white/10">
@@ -135,14 +141,21 @@ export function PageHero({
         />
       )}
       <div className="absolute inset-0 bg-gradient-to-b from-ink-950/70 via-ink-950/85 to-ink-950" />
-      <Container className="relative py-16 sm:py-20">
+      <div
+        aria-hidden
+        className="absolute -right-20 -top-16 h-64 w-64 rounded-full bg-brand-500/15 blur-3xl"
+      />
+      <Container className="relative py-12 sm:py-16 lg:py-20">
         <Eyebrow>Stakey&rsquo;s Cycles</Eyebrow>
-        <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-white sm:text-5xl">
+        <h1 className="max-w-3xl text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
           {title}
         </h1>
         {intro && (
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-300">{intro}</p>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+            {intro}
+          </p>
         )}
+        {children && <div className="mt-6">{children}</div>}
       </Container>
     </header>
   );

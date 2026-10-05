@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useActivePromotions } from '../hooks/usePromotions';
-import { OFFERS } from '../data/gallery';
+import { OFFERS } from '../data/offers';
 import { describeDiscount, formatDateRange } from '../lib/promotions';
 import type { ShopPromotion } from '../types/backend';
 import { Container, SectionHeading } from './ui';
@@ -41,7 +41,7 @@ function PromotionCard({ promo }: { promo: ShopPromotion }) {
 
   return (
     <article
-      className="relative flex flex-col overflow-hidden rounded-3xl border border-white/12 p-6"
+      className="relative flex flex-col overflow-hidden rounded-3xl border border-white/12 p-6 sm:p-7"
       style={{ background: gradient(promo) }}
     >
       {promo.featured && (
@@ -112,10 +112,10 @@ export default function PromotionsStrip() {
 
   if (loading) {
     return (
-      <section className="py-20">
+      <section className="py-14 sm:py-20">
         <Container>
           <SectionHeading eyebrow="Offers" title="Current deals from the workshop" />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
             {[0, 1, 2].map((i) => (
               <div key={i} className="h-56 animate-pulse rounded-3xl border border-white/10 bg-white/[0.03]" />
             ))}
@@ -127,14 +127,14 @@ export default function PromotionsStrip() {
 
   if (promotions.length === 0) {
     return (
-      <section className="py-20">
+      <section className="py-14 sm:py-20">
         <Container>
           <SectionHeading
             eyebrow="Offers"
             title="Current deals from the workshop"
             intro="Keep an eye out — we regularly run offers on servicing and parts."
           />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
             {OFFERS.map((offer, index) => (
               <div
                 key={offer.src}
@@ -155,7 +155,7 @@ export default function PromotionsStrip() {
   }
 
   return (
-    <section className="py-20">
+    <section className="py-14 sm:py-20">
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading
@@ -168,7 +168,7 @@ export default function PromotionsStrip() {
             Live
           </span>
         </div>
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {promotions.map((promo) => (
             <PromotionCard key={promo.id} promo={promo} />
           ))}

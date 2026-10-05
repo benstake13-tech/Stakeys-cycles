@@ -10,7 +10,7 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-white/10 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+    <div className="surface divide-y divide-white/10 overflow-hidden rounded-2xl">
       {items.map((item, index) => {
         const isOpen = open === index;
         return (
@@ -19,7 +19,7 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
               type="button"
               onClick={() => setOpen(isOpen ? null : index)}
               aria-expanded={isOpen}
-              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-white/[0.03]"
+              className="flex min-h-14 w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-white/[0.03]"
             >
               <span className="text-base font-medium text-white">{item.q}</span>
               <ChevronDownIcon

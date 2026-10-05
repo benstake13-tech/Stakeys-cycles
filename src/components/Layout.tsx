@@ -12,6 +12,8 @@ export default function Layout() {
       </main>
       <Footer />
       <CallBar />
+      {/* Keeps content clear of the sticky mobile call bar */}
+      <div aria-hidden className="h-24 sm:hidden" />
     </div>
   );
 }

@@ -58,7 +58,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Home', to: '/' },
   { label: 'Price list', to: '/price-list' },
   { label: 'Shop', to: '/shop' },
-  { label: 'Gallery', to: '/gallery' },
+  { label: 'Our work', to: '/gallery' },
   { label: 'FAQs', to: '/faqs' },
   { label: 'Location', to: '/location' },
   { label: 'Join the Team', to: '/join-the-team' },

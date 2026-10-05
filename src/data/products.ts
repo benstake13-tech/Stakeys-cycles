@@ -69,10 +69,3 @@ export const PRODUCTS: Product[] = [
     image: '/images/product-raceface-cranks.jpg',
   },
 ];
-
-export const formatPrice = (value: number): string =>
-  new Intl.NumberFormat('en-GB', {
-    style: 'currency',
-    currency: 'GBP',
-    minimumFractionDigits: 2,
-  }).format(value);

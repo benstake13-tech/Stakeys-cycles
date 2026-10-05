@@ -177,28 +177,28 @@ export default function BookingPage() {
     return (
       <section className="py-20">
         <Container className="max-w-2xl">
-          <div className="rounded-3xl border border-brand-500/30 bg-brand-500/10 p-8 text-center sm:p-12">
+          <div className="rounded-3xl border border-brand-500/30 bg-brand-500/10 p-7 text-center sm:p-12">
             <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-brand-500 text-ink-950">
               <CheckIcon className="h-8 w-8" />
             </div>
-            <h1 className="text-3xl font-bold text-white">Booking request received</h1>
+            <h1 className="text-2xl font-bold text-white sm:text-3xl">Booking request received</h1>
             <p className="mt-3 text-slate-300">
               Thanks {form.customerName.split(' ')[0]} — your request is with the workshop.
-              We&rsquo;ll confirm your slot and the call-out fee by text or phone.
+              We&rsquo;ll confirm your slot and your quote by text or phone.
             </p>
             <p className="mt-4 inline-block rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-sm text-brand-300">
               Reference {confirmedId}
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
               <a
                 href={TEL_HREF}
-                className="inline-flex items-center gap-2 rounded-full bg-brand-500 px-6 py-3 font-semibold text-ink-950 hover:bg-brand-400"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-500 px-6 py-3 font-semibold text-ink-950 hover:bg-brand-400"
               >
                 <PhoneIcon className="h-4 w-4" /> Call {SHOP.phoneDisplay}
               </a>
               <Link
                 to="/"
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 font-medium text-white hover:bg-white/10"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-3 font-medium text-white hover:bg-white/10"
               >
                 Back to home
               </Link>
@@ -215,13 +215,13 @@ export default function BookingPage() {
         title="Book a repair"
         description="Book a mobile bike or e-scooter repair in Salford. No account needed — tell us your details and we'll call you back."
       />
-      <section className="border-b border-white/10 bg-ink-900/40 py-14">
+      <section className="border-b border-white/10 bg-ink-900/40 py-10 sm:py-14">
         <Container>
           <Eyebrow>Book a call-out</Eyebrow>
-          <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          <h1 className="max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
             Book your repair in five quick steps
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-slate-300">
+          <p className="mt-4 max-w-2xl text-base text-slate-300 sm:text-lg">
             No account, no login. Give us your details and the symptoms, and we&rsquo;ll
             come to you across Salford.
           </p>
@@ -231,11 +231,11 @@ export default function BookingPage() {
       <section className="py-12">
         <Container className="max-w-3xl">
           {/* Progress */}
-          <ol className="mb-8 flex flex-wrap gap-2 text-xs">
+          <ol className="no-scrollbar -mx-4 mb-8 flex gap-2 overflow-x-auto px-4 pb-1 text-xs sm:mx-0 sm:flex-wrap sm:px-0">
             {STEPS.map((label, index) => (
               <li
                 key={label}
-                className={`flex items-center gap-2 rounded-full border px-3 py-1.5 font-medium ${
+                className={`flex shrink-0 snap-start items-center gap-2 rounded-full border px-3 py-1.5 font-medium ${
                   index === step
                     ? 'border-brand-400 bg-brand-500/15 text-brand-300'
                     : index < step
@@ -249,7 +249,7 @@ export default function BookingPage() {
             ))}
           </ol>
 
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
+          <div className="surface rounded-3xl p-5 sm:p-8">
             {step === 0 && (
               <div className="space-y-5">
                 <h2 className="text-xl font-semibold text-white">How can we reach you?</h2>
@@ -365,7 +365,7 @@ export default function BookingPage() {
                             <span className="mt-1 block text-xs text-slate-400">{service.blurb}</span>
                           </span>
                           <span className="shrink-0 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-brand-300">
-                            {service.price > 0 ? `£${service.price}` : 'Free quote'}
+                            Ask for a quote
                           </span>
                         </button>
                       );
@@ -492,7 +492,7 @@ export default function BookingPage() {
                 <p className="flex items-start gap-2 rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs text-slate-400">
                   <ShieldIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" />
                   No account needed. We only use these details to arrange and track your
-                  repair. The call-out fee is confirmed before any work begins.
+                  repair. Your quote is confirmed before any work begins.
                 </p>
               </div>
             )}
@@ -506,12 +506,12 @@ export default function BookingPage() {
               </p>
             )}
 
-            <div className="mt-8 flex items-center justify-between gap-3">
+            <div className="mt-8 flex items-stretch gap-3">
               <button
                 type="button"
                 onClick={goBack}
                 disabled={step === 0}
-                className="rounded-full border border-white/15 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
+                className="rounded-full border border-white/15 px-5 py-3 text-sm font-medium text-white transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-40"
               >
                 Back
               </button>
@@ -519,7 +519,7 @@ export default function BookingPage() {
                 <button
                   type="button"
                   onClick={goNext}
-                  className="inline-flex items-center gap-2 rounded-full bg-brand-500 px-6 py-2.5 text-sm font-semibold text-ink-950 transition hover:bg-brand-400"
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-brand-500 px-6 py-3 text-sm font-semibold text-ink-950 transition hover:bg-brand-400"
                 >
                   Continue <ArrowRightIcon className="h-4 w-4" />
                 </button>
@@ -528,7 +528,7 @@ export default function BookingPage() {
                   type="button"
                   onClick={submit}
                   disabled={submitting}
-                  className="inline-flex items-center gap-2 rounded-full bg-brand-500 px-6 py-2.5 text-sm font-semibold text-ink-950 transition hover:bg-brand-400 disabled:opacity-60"
+                  className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-brand-500 px-6 py-3 text-sm font-semibold text-ink-950 transition hover:bg-brand-400 disabled:opacity-60"
                 >
                   {submitting ? 'Sending…' : 'Send booking request'}
                   {!submitting && <CheckIcon className="h-4 w-4" />}

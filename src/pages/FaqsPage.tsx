@@ -20,7 +20,7 @@ export default function FaqsPage() {
       <PageHero
         title="Frequently asked questions"
         intro="Everything you need to know about repairs, parts, pricing and how our call-out service works."
-        image="/images/gallery-3.jpg"
+        image="/images/workshop-3.jpg"
       />
 
       <Container className="py-14">
@@ -50,37 +50,28 @@ export default function FaqsPage() {
             title="Which bike is right for your terrain?"
             intro="A quick comparison of the main bike types and what they are best suited to."
           />
-          <div className="mt-8 overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.03]">
-            <table className="w-full min-w-[52rem] text-left text-sm">
-              <thead className="text-xs uppercase tracking-wider text-slate-500">
-                <tr>
-                  <th scope="col" className="px-5 py-3 font-medium">
-                    Bike type
-                  </th>
-                  <th scope="col" className="px-5 py-3 font-medium">
-                    Best for
-                  </th>
-                  <th scope="col" className="px-5 py-3 font-medium">
-                    Suitability
-                  </th>
-                  <th scope="col" className="px-5 py-3 font-medium">
-                    Key features
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/5">
-                {BIKE_TYPE_GUIDE.map((row) => (
-                  <tr key={row.type} className="align-top">
-                    <td className="px-5 py-4 font-medium text-white">{row.type}</td>
-                    <td className="px-5 py-4 text-slate-400">{row.bestFor}</td>
-                    <td className="px-5 py-4 text-slate-400">{row.suitability}</td>
-                    <td className="px-5 py-4 text-slate-400">{row.features}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
+          <div className="mt-8 grid gap-4 md:grid-cols-2">
+              {BIKE_TYPE_GUIDE.map((row) => (
+                <div key={row.type} className="surface rounded-2xl p-5">
+                  <h3 className="text-base font-semibold text-white">{row.type}</h3>
+                  <dl className="mt-3 space-y-2 text-sm">
+                    <div>
+                      <dt className="text-xs uppercase tracking-wider text-slate-500">Best for</dt>
+                      <dd className="text-slate-300">{row.bestFor}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-xs uppercase tracking-wider text-slate-500">Suitability</dt>
+                      <dd className="text-slate-300">{row.suitability}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-xs uppercase tracking-wider text-slate-500">Key features</dt>
+                      <dd className="text-slate-400">{row.features}</dd>
+                    </div>
+                  </dl>
+                </div>
+              ))}
+            </div>
+          </section>
 
         <div className="mt-16 flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-8 text-center">
           <p className="text-lg font-medium text-white">Still have a question?</p>

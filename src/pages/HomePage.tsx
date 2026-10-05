@@ -36,8 +36,8 @@ const SERVICES = [
   },
   {
     icon: PoundIcon,
-    title: 'Honest, low prices',
-    body: 'We use second-hand and reconditioned parts where we can, keeping labour and part costs extremely low.',
+    title: 'Honest, upfront quotes',
+    body: 'Tell us what you need and we will quote before we start — keeping costs low with second-hand and reconditioned parts where we can.',
   },
 ];
 
@@ -47,8 +47,8 @@ const STEPS = [
     body: 'Tell us where you are in Salford and what your bike or scooter needs.',
   },
   {
-    title: 'Get your call-out fee',
-    body: 'We calculate a simple call-out fee based on your location — no hidden charges.',
+    title: 'Get your quote',
+    body: 'We assess the job and give you a clear quote — no hidden charges.',
   },
   {
     title: 'We come to you',
@@ -59,7 +59,7 @@ const STEPS = [
 const TRUST = [
   { icon: MapPinIcon, label: 'Call-out only, across Salford' },
   { icon: ShieldIcon, label: 'Any bike, any make, any model' },
-  { icon: PoundIcon, label: 'Fastest turnaround, lowest rates' },
+  { icon: PoundIcon, label: 'Fast turnaround, upfront quotes' },
 ];
 
 export default function HomePage() {
@@ -67,13 +67,13 @@ export default function HomePage() {
     <>
       <Seo
         title="Mobile Bike & E-Scooter Repair in Salford"
-        description="Stakey's Cycles is Salford's call-out-only bike and e-scooter repair service. Expert mobile repairs with fast turnaround and honest prices."
+        description="Stakey's Cycles is Salford's call-out-only bike and e-scooter repair service. Expert mobile repairs with fast turnaround and honest, upfront quotes."
       />
 
       {/* Hero */}
       <section className="relative overflow-hidden">
         <img
-          src="/images/gallery-1.jpg"
+          src="/images/workshop-1.jpg"
           alt=""
           className="absolute inset-0 h-full w-full object-cover opacity-25"
         />
@@ -82,50 +82,55 @@ export default function HomePage() {
           aria-hidden
           className="absolute -right-24 top-10 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl"
         />
-        <Container className="relative py-20 sm:py-28">
-          <div className="grid items-center gap-12 lg:grid-cols-12">
+        <Container className="relative py-14 sm:py-20 lg:py-28">
+          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="animate-fade-up lg:col-span-7">
               <Eyebrow>Salford &middot; Call-out only</Eyebrow>
-              <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+              <h1 className="text-[2.1rem] font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
                 Expert bike repairs,
                 <br />
                 <span className="text-gradient">brought to your door</span>.
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-300 sm:mt-6 sm:text-lg">
                 Stakey&rsquo;s Cycles is Salford&rsquo;s call-out-only bike and e-scooter
-                repair service. The fastest turnaround and lowest rates in the city — we come
-                to you, quote up front, and get you rolling.
+                repair service. Fast turnaround, honest advice — we come to you, quote up
+                front, and get you rolling.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button to="/book" size="lg">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Button to="/book" size="lg" className="w-full sm:w-auto">
                   Book a repair online
                   <ArrowRightIcon className="h-4 w-4" />
                 </Button>
-                <Button href={TEL_HREF} size="lg" variant="secondary">
+                <Button
+                  href={TEL_HREF}
+                  size="lg"
+                  variant="secondary"
+                  className="w-full sm:w-auto"
+                >
                   <PhoneIcon className="h-4 w-4" />
                   {SHOP.phoneDisplay}
                 </Button>
               </div>
-              <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
+              <ul className="mt-8 grid gap-x-6 gap-y-3 sm:flex sm:flex-wrap">
                 {TRUST.map((item) => (
                   <li
                     key={item.label}
                     className="flex items-center gap-2 text-sm font-medium text-slate-300"
                   >
-                    <item.icon className="h-4 w-4 text-brand-400" />
+                    <item.icon className="h-4 w-4 shrink-0 text-brand-400" />
                     {item.label}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="animate-fade-up lg:col-span-5">
-              <div className="rounded-3xl border border-white/12 bg-ink-900/70 p-6 shadow-2xl shadow-black/40 backdrop-blur">
+            <div className="animate-fade-up animate-delay-1 lg:col-span-5">
+              <div className="surface rounded-3xl p-6 shadow-2xl shadow-black/40">
                 <div className="flex items-center gap-3">
                   <img
                     src="/images/logo.png"
                     alt=""
-                    className="h-12 w-12 rounded-full object-cover"
+                    className="h-12 w-12 rounded-full object-cover ring-1 ring-white/10"
                   />
                   <div>
                     <p className="font-semibold text-white">Workshop at a glance</p>
@@ -166,16 +171,16 @@ export default function HomePage() {
       </section>
 
       {/* Services */}
-      <section className="py-20">
+      <section className="py-14 sm:py-20">
         <Container>
           <SectionHeading
             eyebrow="What we do"
             title="Repairs and servicing for every set of wheels"
             intro="From a quick puncture to a full e-scooter electrical fault, we bring the workshop to you."
           />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
             {SERVICES.map((service) => (
-              <Card key={service.title} className="flex flex-col">
+              <Card key={service.title} hover className="flex flex-col">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-500/15 text-brand-400">
                   <service.icon className="h-5 w-5" />
                 </span>
@@ -189,7 +194,7 @@ export default function HomePage() {
               to="/price-list"
               className="inline-flex items-center gap-2 text-sm font-semibold text-brand-300 transition hover:text-brand-200"
             >
-              See our full price list
+              See the full list of repairs
               <ArrowRightIcon className="h-4 w-4" />
             </Link>
           </div>
@@ -197,17 +202,17 @@ export default function HomePage() {
       </section>
 
       {/* How it works */}
-      <section className="border-y border-white/10 bg-white/[0.02] py-20">
+      <section className="border-y border-white/10 bg-white/[0.02] py-14 sm:py-20">
         <Container>
           <SectionHeading
             eyebrow="How it works"
             title="Three simple steps to a fixed bike"
             center
           />
-          <ol className="mt-12 grid gap-6 md:grid-cols-3">
+          <ol className="mt-10 grid gap-5 sm:mt-12 sm:gap-6 md:grid-cols-3">
             {STEPS.map((step, index) => (
               <li key={step.title} className="relative">
-                <div className="flex h-full flex-col rounded-2xl border border-white/10 bg-ink-950/60 p-6">
+                <div className="surface flex h-full flex-col rounded-2xl p-6">
                   <span className="text-3xl font-extrabold text-brand-500/40">
                     0{index + 1}
                   </span>
@@ -224,23 +229,29 @@ export default function HomePage() {
       <PromotionsStrip />
 
       {/* Booking CTA */}
-      <section className="py-8">
+      <section className="py-10 sm:py-14">
         <Container>
-          <div className="relative overflow-hidden rounded-3xl border border-brand-500/30 bg-gradient-to-br from-brand-500/15 to-ink-950 p-8 sm:p-12">
+          <div className="relative overflow-hidden rounded-3xl border border-brand-500/30 bg-gradient-to-br from-brand-500/15 to-ink-950 p-7 sm:p-12">
             <div className="max-w-2xl">
-              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
                 Ready for a fix?
               </h2>
               <p className="mt-4 text-base leading-relaxed text-slate-300">
                 Book an appointment online, or call us today and we&rsquo;ll get you back on
                 the road.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Button to="/book" size="lg">
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Button to="/book" size="lg" className="w-full sm:w-auto">
                   Book an appointment
                   <ArrowRightIcon className="h-4 w-4" />
                 </Button>
-                <Button href={WHATSAPP_HREF} size="lg" variant="secondary" external>
+                <Button
+                  href={WHATSAPP_HREF}
+                  size="lg"
+                  variant="secondary"
+                  external
+                  className="w-full sm:w-auto"
+                >
                   Message on WhatsApp
                 </Button>
               </div>
@@ -250,7 +261,7 @@ export default function HomePage() {
       </section>
 
       {/* Reviews */}
-      <section className="py-20">
+      <section className="py-14 sm:py-20">
         <Container>
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
@@ -285,15 +296,17 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4">
               {[
                 { value: '8am–8pm', label: 'Repairs carried out' },
                 { value: '24h', label: 'Drop-off & collection' },
                 { value: 'Salford', label: 'Our home turf' },
               ].map((stat) => (
-                <Card key={stat.label} className="text-center">
-                  <p className="text-2xl font-bold text-brand-400">{stat.value}</p>
-                  <p className="mt-1 text-xs uppercase tracking-wider text-slate-400">
+                <Card key={stat.label} className="p-4 text-center sm:p-6">
+                  <p className="text-xl font-bold text-brand-400 sm:text-2xl">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1 text-[11px] uppercase tracking-wider text-slate-400 sm:text-xs">
                     {stat.label}
                   </p>
                 </Card>
@@ -304,13 +317,13 @@ export default function HomePage() {
       </section>
 
       {/* Community note */}
-      <section className="border-t border-white/10 py-16">
+      <section className="border-t border-white/10 py-12 sm:py-16">
         <Container>
-          <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+          <div className="flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:gap-6">
             <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-500/15 text-brand-400">
               <UsersIcon className="h-6 w-6" />
             </span>
-            <blockquote className="text-lg leading-relaxed text-slate-300">
+            <blockquote className="text-base leading-relaxed text-slate-300 sm:text-lg">
               Salford is the home of Stakey&rsquo;s Cycles, and I couldn&rsquo;t be prouder
               of that. Everything we do is down to the people of this city — their support,
               their spirit, and their trust.

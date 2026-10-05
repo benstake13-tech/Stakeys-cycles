@@ -41,6 +41,30 @@ export interface PromotionRow {
 export type BookingStatus = 'pending' | 'confirmed' | 'in-progress' | 'completed' | 'cancelled';
 export type ApprovalStatus = 'pending_approval' | 'approved' | 'declined';
 
+/** A job photo uploaded by staff and shown on the public "Jobs we're proud of" page. */
+export interface GalleryItem {
+  id: string;
+  imageUrl: string;
+  title: string;
+  caption: string;
+  vehicleType: string;
+  sortOrder: number;
+  published: boolean;
+  createdAt: string;
+}
+
+/** Shape of a row in the public.gallery_items table. */
+export interface GalleryRow {
+  id: string;
+  image_url: string | null;
+  title: string | null;
+  caption: string | null;
+  vehicle_type: string | null;
+  sort_order: number | null;
+  published: boolean | null;
+  created_at: string | null;
+}
+
 export interface GuestBookingInput {
   customerName: string;
   customerPhone: string;

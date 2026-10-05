@@ -29,7 +29,7 @@ export default function LocationPage() {
         image="/images/location.jpg"
       />
 
-      <Container className="py-14">
+      <Container className="py-12 sm:py-14">
         <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr]">
           <div className="space-y-8">
             <section>
@@ -51,7 +51,7 @@ export default function LocationPage() {
                 </li>
                 <li className="flex gap-3">
                   <span className="font-bold text-brand-400">2.</span>
-                  We calculate a simple call-out fee based on your location.
+                  We assess the job and give you a clear quote based on your location.
                 </li>
                 <li className="flex gap-3">
                   <span className="font-bold text-brand-400">3.</span>

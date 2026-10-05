@@ -75,9 +75,8 @@ export function subscribeToPromotions(onChange: () => void): () => void {
   };
 }
 
-export function describeDiscount(promo: ShopPromotion): string | null {
-  if (promo.discountPercentage) return `${promo.discountPercentage}% off`;
-  if (promo.discountAmount) return `£${promo.discountAmount} off`;
+export function describeDiscount(_promo: ShopPromotion): string | null {
+  // Prices are quote-only, so we no longer surface a discount figure.
   return null;
 }
 
