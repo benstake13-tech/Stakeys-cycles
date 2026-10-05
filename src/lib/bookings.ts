@@ -92,7 +92,7 @@ export async function notifyStaffOfBooking(
     const supabase = getSupabaseClient();
     const { error } = await supabase.functions.invoke('send-email', {
       body: {
-        from: 'noreply@stakeyscyles.co.uk',
+        from: 'noreply@stakeyswheels.co.uk',
         to: SHOP.email,
         subject: `⚡ New website booking #${id}: ${input.serviceTitle} (${input.customerName})`,
         html: EMAIL_HTML(id, input),

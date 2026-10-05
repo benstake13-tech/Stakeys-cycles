@@ -201,7 +201,7 @@ export async function notifyStaffOfOrder(
   try {
     const { error } = await getSupabaseClient().functions.invoke('send-email', {
       body: {
-        from: 'noreply@stakeyscyles.co.uk',
+        from: 'noreply@stakeyswheels.co.uk',
         to: SHOP.email,
         subject: `🛒 New shop order #${id}: ${input.items.length} item(s) (${input.customerName})`,
         html: ORDER_EMAIL_HTML(id, input, subtotal),
