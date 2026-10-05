@@ -1,0 +1,149 @@
+import type { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
+
+export function Container({
+  children,
+  className = '',
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={`mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 ${className}`}>
+      {children}
+    </div>
+  );
+}
+
+type ButtonProps = {
+  children: ReactNode;
+  href?: string;
+  to?: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'md' | 'lg';
+  className?: string;
+  external?: boolean;
+};
+
+const variants = {
+  primary:
+    'bg-brand-500 text-ink-950 hover:bg-brand-400 focus-visible:outline-brand-400 font-semibold shadow-lg shadow-brand-500/20',
+  secondary:
+    'border border-white/15 bg-white/5 text-white hover:bg-white/10 focus-visible:outline-white/40',
+  ghost: 'text-brand-300 hover:text-brand-200 focus-visible:outline-brand-400',
+};
+
+const sizes = {
+  md: 'px-5 py-2.5 text-sm',
+  lg: 'px-7 py-3.5 text-base',
+};
+
+export function Button({
+  children,
+  href,
+  to,
+  variant = 'primary',
+  size = 'md',
+  className = '',
+  external,
+}: ButtonProps) {
+  const cls = `inline-flex items-center justify-center gap-2 rounded-full transition focus-visible:outline-2 focus-visible:outline-offset-2 ${variants[variant]} ${sizes[size]} ${className}`;
+
+  if (to) {
+    return (
+      <Link to={to} className={cls}>
+        {children}
+      </Link>
+    );
+  }
+  if (href) {
+    return (
+      <a
+        href={href}
+        className={cls}
+        {...(external ? { target: '_blank', rel: 'noreferrer noopener' } : {})}
+      >
+        {children}
+      </a>
+    );
+  }
+  return <button className={cls}>{children}</button>;
+}
+
+export function Eyebrow({ children }: { children: ReactNode }) {
+  return (
+    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-brand-400">
+      {children}
+    </p>
+  );
+}
+
+export function SectionHeading({
+  eyebrow,
+  title,
+  intro,
+  center,
+}: {
+  eyebrow?: string;
+  title: string;
+  intro?: ReactNode;
+  center?: boolean;
+}) {
+  return (
+    <div className={center ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl'}>
+      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+      <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        {title}
+      </h2>
+      {intro && <p className="mt-4 text-base leading-relaxed text-slate-400">{intro}</p>}
+    </div>
+  );
+}
+
+export function Card({
+  children,
+  className = '',
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
+
+export function PageHero({
+  title,
+  intro,
+  image,
+}: {
+  title: string;
+  intro?: string;
+  image?: string;
+}) {
+  return (
+    <header className="relative overflow-hidden border-b border-white/10">
+      {image && (
+        <img
+          src={image}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-25"
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-b from-ink-950/70 via-ink-950/85 to-ink-950" />
+      <Container className="relative py-16 sm:py-20">
+        <Eyebrow>Stakey&rsquo;s Cycles</Eyebrow>
+        <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          {title}
+        </h1>
+        {intro && (
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-slate-300">{intro}</p>
+        )}
+      </Container>
+    </header>
+  );
+}
