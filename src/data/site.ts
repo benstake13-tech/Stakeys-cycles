@@ -12,6 +12,10 @@ export const SHOP = {
   },
   bookingUrl: 'https://book.heygoldie.com/Stakeys-Cycles/checkout',
   reviewUrl: 'https://www.google.com/search?q=stakeys+cycles+salford+reviews',
+  /** Public marketing site (this app). */
+  websiteUrl: 'https://stakeyscycles.vercel.app',
+  /** Customer app: loyalty card, prize wheel and staff terminal. */
+  staffUrl: 'https://stakeyswheels.co.uk',
 } as const;
 
 export const TEL_HREF = `tel:${SHOP.phoneRaw}`;

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { MAIL_HREF, NAV_ITEMS, SHOP, SOCIAL_LINKS, TEL_HREF } from '../data/site';
 import { Container } from './ui';
-import { ICON_BY_NAME, MailIcon, MapPinIcon, PhoneIcon } from './Icons';
+import { ICON_BY_NAME, LockIcon, MailIcon, MapPinIcon, PhoneIcon } from './Icons';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -104,7 +104,16 @@ export default function Footer() {
           <p>
             &copy; {year} Stakey&rsquo;s Cycles. All rights reserved.
           </p>
-          <p>Salford, Greater Manchester &middot; Call-out service only</p>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <p>Salford, Greater Manchester &middot; Call-out service only</p>
+            <a
+              href={SHOP.staffUrl}
+              className="inline-flex items-center gap-1.5 font-medium text-slate-400 transition hover:text-brand-300"
+            >
+              <LockIcon className="h-3.5 w-3.5" />
+              Staff &amp; Loyalty Login
+            </a>
+          </div>
         </div>
       </Container>
     </footer>
