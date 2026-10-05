@@ -14,7 +14,9 @@ export const SHOP = {
   reviewUrl: 'https://www.google.com/search?q=stakeys+cycles+salford+reviews',
   /** Public marketing site (this app). */
   websiteUrl: 'https://stakeyscycles.vercel.app',
-  /** Customer app: loyalty card, prize wheel and staff terminal. */
+  /** Customer app: loyalty pass, service bookings and the prize wheel. */
+  customerUrl: 'https://www.stakeyswheels.co.uk',
+  /** Staff-only workshop terminal. */
   staffUrl: 'https://stakeyswheels.co.uk',
 } as const;
 

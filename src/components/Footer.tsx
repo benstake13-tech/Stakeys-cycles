@@ -107,11 +107,18 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <p>Salford, Greater Manchester &middot; Call-out service only</p>
             <a
+              href={SHOP.customerUrl}
+              className="inline-flex items-center gap-1.5 font-medium text-slate-400 transition hover:text-brand-300"
+            >
+              <LockIcon className="h-3.5 w-3.5" />
+              Customer &amp; Loyalty Login
+            </a>
+            <a
               href={SHOP.staffUrl}
               className="inline-flex items-center gap-1.5 font-medium text-slate-400 transition hover:text-brand-300"
             >
               <LockIcon className="h-3.5 w-3.5" />
-              Staff &amp; Loyalty Login
+              Staff Terminal
             </a>
           </div>
         </div>
