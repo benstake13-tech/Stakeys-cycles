@@ -4,6 +4,10 @@ import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import PriceListPage from './pages/PriceListPage';
 import ShopPage from './pages/ShopPage';
+import ProductPage from './pages/ProductPage';
+import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
+import OrderConfirmationPage from './pages/OrderConfirmationPage';
 import GalleryPage from './pages/GalleryPage';
 import FaqsPage from './pages/FaqsPage';
 import LocationPage from './pages/LocationPage';
@@ -30,6 +34,10 @@ export default function App() {
           <Route index element={<HomePage />} />
           <Route path="price-list" element={<PriceListPage />} />
           <Route path="shop" element={<ShopPage />} />
+          <Route path="shop/:id" element={<ProductPage />} />
+          <Route path="cart" element={<CartPage />} />
+          <Route path="checkout" element={<CheckoutPage />} />
+          <Route path="order/:id" element={<OrderConfirmationPage />} />
           <Route path="gallery" element={<GalleryPage />} />
           <Route path="faqs" element={<FaqsPage />} />
           <Route path="location" element={<LocationPage />} />

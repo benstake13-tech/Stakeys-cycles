@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { NAV_ITEMS, SHOP, TEL_HREF } from '../data/site';
 import { Button, Container } from './ui';
-import { CloseIcon, MenuIcon, PhoneIcon, ArrowRightIcon } from './Icons';
+import { CartIcon, CloseIcon, MenuIcon, PhoneIcon, ArrowRightIcon } from './Icons';
+import { useCart } from '../context/CartContext';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
+  const { count } = useCart();
 
   // Close the mobile drawer whenever the route changes.
   useEffect(() => {
@@ -61,6 +63,18 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <Link
+            to="/cart"
+            aria-label={`Cart, ${count} ${count === 1 ? 'item' : 'items'}`}
+            className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white transition hover:border-white/30 active:scale-95"
+          >
+            <CartIcon className="h-5 w-5" />
+            {count > 0 && (
+              <span className="absolute -right-0.5 -top-0.5 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-500 px-1 text-[11px] font-bold text-ink-950">
+                {count}
+              </span>
+            )}
+          </Link>
           <Button href={TEL_HREF} variant="secondary" className="hidden md:inline-flex">
             <PhoneIcon className="h-4 w-4" />
             Call us out

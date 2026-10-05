@@ -23,6 +23,10 @@ type ButtonProps = {
   size?: 'md' | 'lg';
   className?: string;
   external?: boolean;
+  onClick?: () => void;
+  disabled?: boolean;
+  type?: 'button' | 'submit';
+  ariaLabel?: string;
 };
 
 const variants = {
@@ -46,6 +50,10 @@ export function Button({
   size = 'md',
   className = '',
   external,
+  onClick,
+  disabled,
+  type = 'button',
+  ariaLabel,
 }: ButtonProps) {
   const cls = `inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-full transition duration-200 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-60 ${variants[variant]} ${sizes[size]} ${className}`;
 
@@ -67,7 +75,11 @@ export function Button({
       </a>
     );
   }
-  return <button className={cls}>{children}</button>;
+  return (
+    <button type={type} onClick={onClick} disabled={disabled} aria-label={ariaLabel} className={cls}>
+      {children}
+    </button>
+  );
 }
 
 export function Eyebrow({ children }: { children: ReactNode }) {
