@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { NAV_ITEMS, SHOP, TEL_HREF } from '../data/site';
 import { Button, Container } from './ui';
-import { CloseIcon, MenuIcon, PhoneIcon } from './Icons';
+import { CloseIcon, MenuIcon, PhoneIcon, ArrowRightIcon } from './Icons';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -47,7 +47,11 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button href={TEL_HREF} className="hidden sm:inline-flex">
+          <Button to="/book" className="hidden sm:inline-flex">
+            Book online
+            <ArrowRightIcon className="h-4 w-4" />
+          </Button>
+          <Button href={TEL_HREF} variant="secondary" className="hidden md:inline-flex">
             <PhoneIcon className="h-4 w-4" />
             Call us out
           </Button>

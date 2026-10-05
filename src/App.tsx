@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
@@ -9,6 +9,9 @@ import FaqsPage from './pages/FaqsPage';
 import LocationPage from './pages/LocationPage';
 import JoinTeamPage from './pages/JoinTeamPage';
 import NotFoundPage from './pages/NotFoundPage';
+
+// The booking flow pulls in the Supabase client, so keep it out of the main bundle.
+const BookingPage = lazy(() => import('./pages/BookingPage'));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -31,6 +34,20 @@ export default function App() {
           <Route path="faqs" element={<FaqsPage />} />
           <Route path="location" element={<LocationPage />} />
           <Route path="join-the-team" element={<JoinTeamPage />} />
+          <Route
+            path="book"
+            element={
+              <Suspense
+                fallback={
+                  <div className="flex min-h-[60vh] items-center justify-center text-sm text-slate-500">
+                    Loading booking…
+                  </div>
+                }
+              >
+                <BookingPage />
+              </Suspense>
+            }
+          />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

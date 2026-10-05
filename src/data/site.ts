@@ -62,4 +62,5 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'FAQs', to: '/faqs' },
   { label: 'Location', to: '/location' },
   { label: 'Join the Team', to: '/join-the-team' },
+  { label: 'Book', to: '/book' },
 ];

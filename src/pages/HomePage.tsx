@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import { Seo } from '../components/Seo';
 import { Button, Card, Container, Eyebrow, SectionHeading } from '../components/ui';
-import { OFFERS } from '../data/gallery';
 import { SHOP, TEL_HREF, WHATSAPP_HREF } from '../data/site';
+import PromotionsStrip from '../components/Promotions';
 import {
   ArrowRightIcon,
   BikeIcon,
   BoltIcon,
   CheckIcon,
+  ClockIcon,
   MapPinIcon,
   PhoneIcon,
   PoundIcon,
@@ -74,43 +75,92 @@ export default function HomePage() {
         <img
           src="/images/gallery-1.jpg"
           alt=""
-          className="absolute inset-0 h-full w-full object-cover opacity-30"
+          className="absolute inset-0 h-full w-full object-cover opacity-25"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-ink-950 via-ink-950/90 to-ink-950/70" />
+        <div className="absolute inset-0 bg-gradient-to-br from-ink-950 via-ink-950/92 to-ink-950/60" />
+        <div
+          aria-hidden
+          className="absolute -right-24 top-10 h-72 w-72 rounded-full bg-brand-500/20 blur-3xl"
+        />
         <Container className="relative py-20 sm:py-28">
-          <div className="max-w-3xl animate-fade-up">
-            <Eyebrow>Salford &middot; Call-out only</Eyebrow>
-            <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Expert bike repairs,{' '}
-              <span className="text-brand-400">brought to your door</span>.
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
-              Stakey&rsquo;s Cycles is your dedicated call-out-only service, bringing expert
-              repairs directly to you. We offer the fastest turnaround and lowest rates in
-              Salford. Just provide your postcode, and we&rsquo;ll calculate the simple
-              call-out fee.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href={SHOP.bookingUrl} size="lg" external>
-                Call us out
-                <ArrowRightIcon className="h-4 w-4" />
-              </Button>
-              <Button href={TEL_HREF} size="lg" variant="secondary">
-                <PhoneIcon className="h-4 w-4" />
-                {SHOP.phoneDisplay}
-              </Button>
+          <div className="grid items-center gap-12 lg:grid-cols-12">
+            <div className="animate-fade-up lg:col-span-7">
+              <Eyebrow>Salford &middot; Call-out only</Eyebrow>
+              <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                Expert bike repairs,
+                <br />
+                <span className="text-gradient">brought to your door</span>.
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+                Stakey&rsquo;s Cycles is Salford&rsquo;s call-out-only bike and e-scooter
+                repair service. The fastest turnaround and lowest rates in the city — we come
+                to you, quote up front, and get you rolling.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button to="/book" size="lg">
+                  Book a repair online
+                  <ArrowRightIcon className="h-4 w-4" />
+                </Button>
+                <Button href={TEL_HREF} size="lg" variant="secondary">
+                  <PhoneIcon className="h-4 w-4" />
+                  {SHOP.phoneDisplay}
+                </Button>
+              </div>
+              <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
+                {TRUST.map((item) => (
+                  <li
+                    key={item.label}
+                    className="flex items-center gap-2 text-sm font-medium text-slate-300"
+                  >
+                    <item.icon className="h-4 w-4 text-brand-400" />
+                    {item.label}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-3">
-              {TRUST.map((item) => (
-                <li
-                  key={item.label}
-                  className="flex items-center gap-2 text-sm font-medium text-slate-300"
-                >
-                  <item.icon className="h-4 w-4 text-brand-400" />
-                  {item.label}
-                </li>
-              ))}
-            </ul>
+
+            <div className="animate-fade-up lg:col-span-5">
+              <div className="rounded-3xl border border-white/12 bg-ink-900/70 p-6 shadow-2xl shadow-black/40 backdrop-blur">
+                <div className="flex items-center gap-3">
+                  <img
+                    src="/images/logo.png"
+                    alt=""
+                    className="h-12 w-12 rounded-full object-cover"
+                  />
+                  <div>
+                    <p className="font-semibold text-white">Workshop at a glance</p>
+                    <p className="text-xs text-slate-400">{SHOP.area}</p>
+                  </div>
+                </div>
+                <dl className="mt-6 space-y-4 text-sm">
+                  <div className="flex items-start gap-3">
+                    <ClockIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" />
+                    <div>
+                      <dt className="font-medium text-white">Repairs</dt>
+                      <dd className="text-slate-400">{SHOP.hours.work}</dd>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <MapPinIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" />
+                    <div>
+                      <dt className="font-medium text-white">Drop-off &amp; collection</dt>
+                      <dd className="text-slate-400">{SHOP.hours.dropOff}</dd>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <ShieldIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" />
+                    <div>
+                      <dt className="font-medium text-white">No account needed</dt>
+                      <dd className="text-slate-400">Book online in five quick steps</dd>
+                    </div>
+                  </div>
+                </dl>
+                <Button to="/book" className="mt-6 w-full" size="lg">
+                  Start your booking
+                  <ArrowRightIcon className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
           </div>
         </Container>
       </section>
@@ -170,31 +220,8 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Offers */}
-      <section className="py-20">
-        <Container>
-          <SectionHeading
-            eyebrow="Offers"
-            title="Current deals from the workshop"
-            intro="Keep an eye out — we regularly run offers on servicing and parts."
-          />
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {OFFERS.map((offer, index) => (
-              <div
-                key={offer.src}
-                className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]"
-              >
-                <img
-                  src={offer.src}
-                  alt={`Stakey's Cycles offer ${index + 1}`}
-                  loading="lazy"
-                  className="aspect-square w-full object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
+      {/* Offers — live from the staff backend */}
+      <PromotionsStrip />
 
       {/* Booking CTA */}
       <section className="py-8">
@@ -209,7 +236,7 @@ export default function HomePage() {
                 the road.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Button href={SHOP.bookingUrl} size="lg" external>
+                <Button to="/book" size="lg">
                   Book an appointment
                   <ArrowRightIcon className="h-4 w-4" />
                 </Button>

@@ -59,7 +59,7 @@ export default function LocationPage() {
                 </li>
               </ol>
               <div className="mt-6">
-                <Button href={SHOP.bookingUrl} size="lg" external>
+                <Button to="/book" size="lg">
                   Book an appointment
                 </Button>
               </div>
