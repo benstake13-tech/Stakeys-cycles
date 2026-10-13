@@ -1,3 +1,5 @@
+import { publicImageUrl } from '../lib/imageStorage';
+import BrandLogo from '../components/BrandLogo';
 import { Link } from 'react-router-dom';
 import { Seo } from '../components/Seo';
 import { Button, Card, Container, Eyebrow, SectionHeading } from '../components/ui';
@@ -73,7 +75,7 @@ export default function HomePage() {
       {/* Hero */}
       <section className="relative overflow-hidden">
         <img
-          src="/images/workshop-1.jpg"
+          src={publicImageUrl("website/workshop-1.jpg")}
           alt=""
           className="absolute inset-0 h-full w-full object-cover opacity-25"
         />
@@ -127,11 +129,7 @@ export default function HomePage() {
             <div className="animate-fade-up animate-delay-1 lg:col-span-5">
               <div className="surface rounded-3xl p-6 shadow-2xl shadow-black/40">
                 <div className="flex items-center gap-3">
-                  <img
-                    src="/images/logo.png"
-                    alt=""
-                    className="h-12 w-12 rounded-full object-cover ring-1 ring-white/10"
-                  />
+                  <BrandLogo className="h-12 w-12 rounded-full object-cover ring-1 ring-white/10" />
                   <div>
                     <p className="font-semibold text-white">Workshop at a glance</p>
                     <p className="text-xs text-slate-400">{SHOP.area}</p>
