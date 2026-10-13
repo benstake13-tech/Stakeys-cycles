@@ -1,3 +1,4 @@
+import BrandLogo from './BrandLogo';
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { NAV_ITEMS, SHOP, TEL_HREF } from '../data/site';
@@ -40,11 +41,7 @@ export default function Header() {
       <header className="sticky top-0 z-50 border-b border-white/10 bg-ink-950/85 backdrop-blur-xl">
         <Container className="flex h-16 items-center justify-between gap-3 lg:h-18">
         <Link to="/" className="flex min-w-0 items-center gap-3">
-          <img
-            src="/images/logo.png"
-            alt="Stakey's Cycles logo"
-            className="h-10 w-10 shrink-0 rounded-full object-cover ring-1 ring-white/10"
-          />
+          <BrandLogo className="h-10 w-10 shrink-0 rounded-full object-cover ring-1 ring-white/10" />
           <span className="flex min-w-0 flex-col leading-none">
             <span className="truncate text-base font-bold tracking-tight text-white">
               Stakey&rsquo;s Cycles
