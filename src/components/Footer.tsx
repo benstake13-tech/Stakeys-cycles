@@ -1,3 +1,4 @@
+import BrandLogo from './BrandLogo';
 import { Link } from 'react-router-dom';
 import { MAIL_HREF, NAV_ITEMS, SHOP, SOCIAL_LINKS, TEL_HREF } from '../data/site';
 import { Container } from './ui';
@@ -12,11 +13,7 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3">
-              <img
-                src="/images/logo.png"
-                alt="Stakey's Cycles logo"
-                className="h-12 w-12 rounded-full object-cover"
-              />
+              <BrandLogo className="h-12 w-12 rounded-full object-cover" />
               <span className="text-lg font-bold text-white">Stakey&rsquo;s Cycles</span>
             </Link>
             <p className="mt-4 text-sm leading-relaxed text-slate-400">
