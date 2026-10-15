@@ -15,11 +15,11 @@ export const SUPABASE_ANON_KEY =
 
 let instance: SupabaseClient | null = null;
 
-/** Public, read-mostly client for the marketing site. No auth session. */
+/** Shared public client; seller actions use authenticated RLS and the listing Edge Function. */
 export function getSupabaseClient(): SupabaseClient {
   if (!instance) {
     instance = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-      auth: { persistSession: false, autoRefreshToken: false },
+      auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true },
     });
   }
   return instance;

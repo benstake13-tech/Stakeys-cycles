@@ -13,6 +13,7 @@ import FaqsPage from './pages/FaqsPage';
 import LocationPage from './pages/LocationPage';
 import JoinTeamPage from './pages/JoinTeamPage';
 import NotFoundPage from './pages/NotFoundPage';
+import MarketplacePage from './pages/MarketplacePage';
 import { SeasonalThemeProvider } from './context/SeasonalThemeContext';
 
 // The booking flow pulls in the Supabase client, so keep it out of the main bundle.
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="price-list" element={<PriceListPage />} />
           <Route path="shop" element={<ShopPage />} />
           <Route path="shop/:id" element={<ProductPage />} />
+          <Route path="marketplace" element={<MarketplacePage />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="checkout" element={<CheckoutPage />} />
           <Route path="order/:id" element={<OrderConfirmationPage />} />
