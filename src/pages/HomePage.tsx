@@ -3,6 +3,7 @@ import { Seo } from '../components/Seo';
 import { Button, Card, Container, Eyebrow, SectionHeading } from '../components/ui';
 import { SHOP, TEL_HREF, WHATSAPP_HREF } from '../data/site';
 import PromotionsStrip from '../components/Promotions';
+import SeasonalMascot from '../components/SeasonalMascot';
 import {
   ArrowRightIcon,
   BikeIcon,
@@ -160,6 +161,12 @@ export default function HomePage() {
                     </div>
                   </div>
                 </dl>
+                <div className="mt-5 flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.035] p-3">
+                  <SeasonalMascot />
+                  <p className="max-w-[11rem] text-xs leading-relaxed text-slate-400">
+                    Meet this holiday&rsquo;s visitor. Give them a gentle poke and see what happens.
+                  </p>
+                </div>
                 <Button to="/book" className="mt-6 w-full" size="lg">
                   Start your booking
                   <ArrowRightIcon className="h-4 w-4" />

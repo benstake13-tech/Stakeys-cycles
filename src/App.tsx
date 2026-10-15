@@ -13,6 +13,7 @@ import FaqsPage from './pages/FaqsPage';
 import LocationPage from './pages/LocationPage';
 import JoinTeamPage from './pages/JoinTeamPage';
 import NotFoundPage from './pages/NotFoundPage';
+import { SeasonalThemeProvider } from './context/SeasonalThemeContext';
 
 // The booking flow pulls in the Supabase client, so keep it out of the main bundle.
 const BookingPage = lazy(() => import('./pages/BookingPage'));
@@ -27,7 +28,7 @@ function ScrollToTop() {
 
 export default function App() {
   return (
-    <>
+    <SeasonalThemeProvider>
       <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
@@ -59,6 +60,6 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
-    </>
+    </SeasonalThemeProvider>
   );
 }

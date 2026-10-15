@@ -4,6 +4,7 @@ import { NAV_ITEMS, SHOP, TEL_HREF } from '../data/site';
 import { Button, Container } from './ui';
 import { CartIcon, CloseIcon, MenuIcon, PhoneIcon, ArrowRightIcon } from './Icons';
 import { useCart } from '../context/CartContext';
+import SeasonalThemePicker from './SeasonalThemePicker';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -37,7 +38,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-ink-950/85 backdrop-blur-xl">
+      <header className="header-glass sticky top-2 z-50 mx-3 rounded-2xl">
         <Container className="flex h-16 items-center justify-between gap-3 lg:h-18">
         <Link to="/" className="flex min-w-0 items-center gap-3">
           <img
@@ -64,6 +65,7 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <SeasonalThemePicker />
           <Link
             to="/cart"
             aria-label={`Cart, ${count} ${count === 1 ? 'item' : 'items'}`}
@@ -110,7 +112,7 @@ export default function Header() {
       {open && (
         <div
           id="mobile-menu"
-          className="fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t border-white/10 bg-ink-950/98 backdrop-blur-xl xl:hidden"
+          className="fixed inset-x-0 top-[4.5rem] bottom-0 z-40 overflow-y-auto border-t border-white/10 bg-ink-950/90 backdrop-blur-2xl xl:hidden"
         >
           <Container className="py-6">
             <nav className="grid gap-1.5">
