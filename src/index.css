@@ -83,6 +83,28 @@
   }
 }
 
+/* Original Stakeys OS-style dock for wide desktop navigation. */
+.stakeys-site-dock { position: fixed; z-index: 45; left: 50%; bottom: 18px; transform: translateX(-50%); padding: 9px 12px; border: 1px solid #b4ffcf3a; border-radius: 24px; background: linear-gradient(145deg,#1b3029ed,#07120df2); box-shadow: inset 0 1px #ffffff1a,0 18px 44px #0009; backdrop-filter: blur(24px); }
+.stakeys-site-dock-items { display: flex; align-items: end; gap: 5px; }
+.stakeys-site-dock-items > a,.stakeys-site-dock-items > button { display: flex; width: 64px; height: 66px; flex-direction: column; align-items: center; justify-content: end; gap: 5px; border: 0; background: none; color: #c4e7d0; text-decoration: none; cursor: pointer; }
+.stakeys-site-dock-items > a > span,.stakeys-site-dock-items > button > span { display: grid; width: 46px; height: 46px; place-items: center; border: 1px solid #afffcf3a; border-radius: 15px; background: linear-gradient(145deg,#305741,#0c2417); color: #8effb7; box-shadow: inset 0 1px #fff2,0 7px 15px #0005; transform: scale(var(--dock-scale,1)); transform-origin: bottom center; transition: transform 120ms ease-out; }
+.stakeys-site-dock-items > a[aria-current="page"] > span { border-color: #7affad9c; color: #d5ffe3; box-shadow: inset 0 1px #fff3,0 0 22px #00ff663a; }
+.stakeys-site-dock-items b { max-width: 70px; overflow: hidden; color: #bdd8c7; font-size: 9px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.stakeys-site-drawer-backdrop { position: fixed; z-index: 60; inset: 0; display: flex; align-items: center; justify-content: center; padding: 24px; background: #000b; backdrop-filter: blur(16px); }
+.stakeys-site-drawer { width: min(100%,720px); max-height: min(720px,calc(100dvh - 48px)); overflow: auto; padding: 28px; border: 1px solid #b4ffcf42; border-radius: 28px; background: linear-gradient(145deg,#172c22,#07120d); color: #f0fff5; box-shadow: 0 28px 90px #0009; }
+.stakeys-site-drawer header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+.stakeys-site-drawer header small { color: #79efa4; font-size: 10px; letter-spacing: .18em; }
+.stakeys-site-drawer header h2 { margin: 5px 0 0; font-size: 26px; }
+.stakeys-site-drawer header > button { width: 44px; height: 44px; border: 1px solid #fff2; border-radius: 14px; background: #ffffff08; color: white; font-size: 27px; cursor: pointer; }
+.stakeys-site-drawer nav { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.stakeys-site-drawer nav a { display: flex; min-height: 66px; align-items: center; gap: 12px; padding: 10px 13px; border: 1px solid #b4ffcf20; border-radius: 15px; color: #eafff0; text-decoration: none; }
+.stakeys-site-drawer nav a:hover,.stakeys-site-drawer nav a[aria-current="page"] { border-color: #7affad80; background: #a6ffc80b; }
+.stakeys-site-drawer nav a span { display: grid; width: 42px; height: 42px; flex: 0 0 auto; place-items: center; border: 1px solid #b4ffcf35; border-radius: 13px; background: linear-gradient(145deg,#335c46,#122d20); color: #89ffb6; }
+.stakeys-site-drawer nav a i { margin-left: auto; color: #7ceca5; font-size: 25px; font-style: normal; }
+@media (max-width: 767px) { .stakeys-site-dock { display: none; } }
+@media (min-width: 768px) { .stakeys-site-drawer-backdrop { display: none; } }
+@media (prefers-reduced-motion: reduce) { .stakeys-site-dock-items > a > span,.stakeys-site-dock-items > button > span { transform: none; transition: none; } }
+
 /* ------------------------------------------------------------------ */
 /*  Component utilities                                                */
 /* ------------------------------------------------------------------ */

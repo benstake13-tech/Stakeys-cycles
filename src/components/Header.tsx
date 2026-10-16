@@ -5,6 +5,7 @@ import { Button, Container } from './ui';
 import { CartIcon, CloseIcon, MenuIcon, PhoneIcon, ArrowRightIcon } from './Icons';
 import { useCart } from '../context/CartContext';
 import SeasonalThemePicker from './SeasonalThemePicker';
+import WebsiteDesktopDock from './WebsiteDesktopDock';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -38,6 +39,7 @@ export default function Header() {
 
   return (
     <>
+      <WebsiteDesktopDock />
       <header className="header-glass sticky top-2 z-50 mx-3 rounded-2xl">
         <Container className="flex h-16 items-center justify-between gap-3 lg:h-18">
         <Link to="/" className="flex min-w-0 items-center gap-3">
