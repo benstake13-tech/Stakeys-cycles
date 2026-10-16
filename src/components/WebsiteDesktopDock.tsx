@@ -22,10 +22,16 @@ export default function WebsiteDesktopDock() {
   return <>
     <nav className="stakeys-site-dock" aria-label="Website dock" onPointerLeave={() => refs.current.forEach(element => element?.style.removeProperty('--dock-scale'))} onPointerMove={event => {
       if (event.pointerType !== 'mouse') return;
-      refs.current.forEach(element => {
-        if (!element) return;
+      const centres = refs.current.map(element => {
+        if (!element) return null;
         const rect = element.getBoundingClientRect();
-        const distance = Math.abs(event.clientX - (rect.left + rect.width / 2));
+        return rect.left + rect.width / 2;
+      });
+      refs.current.forEach((element,index) => {
+        if (!element) return;
+        const centre = centres[index];
+        if (centre === null) return;
+        const distance = Math.abs(event.clientX - centre);
         element.style.setProperty('--dock-scale', (1 + .4 * Math.exp(-(distance ** 2) / (2 * 66 ** 2))).toFixed(3));
       });
     }}>

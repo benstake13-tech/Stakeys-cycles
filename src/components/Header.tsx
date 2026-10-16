@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { NAV_ITEMS, SHOP, TEL_HREF } from '../data/site';
 import { Button, Container } from './ui';
 import { CartIcon, CloseIcon, MenuIcon, PhoneIcon, ArrowRightIcon } from './Icons';
+import { StakeysAppIcon, type StakeysIconName } from './StakeysAppIcon';
 import { useCart } from '../context/CartContext';
 import SeasonalThemePicker from './SeasonalThemePicker';
 import WebsiteDesktopDock from './WebsiteDesktopDock';
@@ -36,6 +37,7 @@ export default function Header() {
     `rounded-full px-3 py-2 text-sm font-medium transition ${
       isActive ? 'text-brand-400' : 'text-slate-300 hover:text-white'
     }`;
+  const navIcons: StakeysIconName[] = ['home','sales','inventory','garage','workshop','help','website','account','booking'];
 
   return (
     <>
@@ -58,12 +60,8 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-0.5 xl:flex">
-          {NAV_ITEMS.map((item) => (
-            <NavLink key={item.to} to={item.to} className={linkClass} end={item.to === '/'}>
-              {item.label}
-            </NavLink>
-          ))}
+        <nav className="hidden" aria-label="Primary site navigation">
+          {NAV_ITEMS.map((item) => <NavLink key={item.to} to={item.to} className={linkClass} end={item.to === '/'}>{item.label}</NavLink>)}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -117,26 +115,18 @@ export default function Header() {
           className="fixed inset-x-0 top-[4.5rem] bottom-0 z-40 overflow-y-auto border-t border-white/10 bg-ink-950/90 backdrop-blur-2xl xl:hidden"
         >
           <Container className="py-6">
-            <nav className="grid gap-1.5">
-              {NAV_ITEMS.map((item) => (
-                <NavLink
-                  key={item.to}
-                  to={item.to}
-                  end={item.to === '/'}
-                  onClick={() => setOpen(false)}
-                  className={({ isActive }) =>
-                    `flex items-center justify-between rounded-2xl border px-4 py-3.5 text-base font-medium transition ${
-                      isActive
-                        ? 'border-brand-400/40 bg-brand-500/10 text-brand-200'
-                        : 'border-white/10 text-slate-200 active:bg-white/5'
-                    }`
-                  }
-                >
-                  {item.label}
-                  <ArrowRightIcon className="h-4 w-4 opacity-40" />
-                </NavLink>
-              ))}
-            </nav>
+            <div className="site-mobile-app-sections">
+              <section aria-label="Shop and services"><h3>SHOP &amp; SERVICES</h3><nav className="site-mobile-app-grid">
+                {NAV_ITEMS.slice(0,4).map((item,index)=><NavLink key={item.to} to={item.to} end={item.to==='/'} onClick={()=>setOpen(false)} className={({isActive})=>isActive?'is-active':''}>
+                  <span><StakeysAppIcon name={navIcons[index]} size={24}/></span><b>{item.label}</b><ArrowRightIcon className="site-mobile-app-arrow"/>
+                </NavLink>)}
+              </nav></section>
+              <section aria-label="Explore Stakeys"><h3>EXPLORE STAKEY’S</h3><nav className="site-mobile-app-grid">
+                {NAV_ITEMS.slice(4).map((item,index)=><NavLink key={item.to} to={item.to} end={item.to==='/'} onClick={()=>setOpen(false)} className={({isActive})=>isActive?'is-active':''}>
+                  <span><StakeysAppIcon name={navIcons[index+4]} size={24}/></span><b>{item.label}</b><ArrowRightIcon className="site-mobile-app-arrow"/>
+                </NavLink>)}
+              </nav></section>
+            </div>
             <div className="mt-6 grid gap-3">
               <Button to="/book" size="lg" className="w-full">
                 Book a repair online
