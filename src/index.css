@@ -259,3 +259,72 @@ html[data-season] body {
 .animate-delay-2 {
   animation-delay: 0.16s;
 }
+
+
+/* Translucent mobile dock with smooth, preference-controlled magnification. */
+.mobile-action-dock {
+  border: 1px solid rgba(255, 255, 255, 0.17);
+  border-radius: 1.4rem;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.11), rgba(255,255,255,.025) 48%, rgba(0,170,33,.07)),
+    rgba(7, 12, 10, 0.64);
+  box-shadow: 0 16px 42px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.13);
+  -webkit-backdrop-filter: blur(28px) saturate(175%);
+  backdrop-filter: blur(28px) saturate(175%);
+  transition: background 320ms ease, border-color 320ms ease, box-shadow 320ms ease;
+}
+.dock-action {
+  transform: translateZ(0) scale(1);
+  transform-origin: center;
+  transition:
+    transform 360ms cubic-bezier(.2,.85,.25,1.35),
+    background-color 260ms ease,
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    color 260ms ease;
+  will-change: transform;
+}
+.dock-primary {
+  background: linear-gradient(135deg, #24c653, #00aa21);
+  box-shadow: 0 5px 18px rgba(0,170,33,.24), inset 0 1px 0 rgba(255,255,255,.2);
+}
+.dock-primary:hover, .dock-primary:focus-visible {
+  transform: scale(var(--dock-magnification, 1.18));
+  box-shadow: 0 8px 24px rgba(0,170,33,.34), inset 0 1px 0 rgba(255,255,255,.25);
+}
+.dock-icon {
+  border: 1px solid rgba(255,255,255,.17);
+  background: rgba(255,255,255,.055);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+.dock-icon:hover, .dock-icon:focus-visible {
+  transform: scale(var(--dock-magnification, 1.18));
+  border-color: rgba(85,216,136,.55);
+  background: rgba(0,170,33,.16);
+  box-shadow: 0 6px 18px rgba(0,0,0,.2), 0 0 0 1px rgba(85,216,136,.08);
+}
+.dock-settings { width: 2.25rem; height: 2.25rem; }
+.dock-settings-panel {
+  border: 1px solid rgba(255,255,255,.16);
+  background: linear-gradient(145deg, rgba(22,33,26,.88), rgba(5,8,6,.84));
+  box-shadow: 0 12px 32px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.08);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  animation: dock-panel-in 220ms cubic-bezier(.2,.8,.2,1) both;
+}
+.dock-strength-slider {
+  accent-color: #1fc161;
+  cursor: pointer;
+}
+@keyframes dock-panel-in {
+  from { opacity: 0; transform: translateY(6px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (hover: none) {
+  .dock-action:hover { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dock-action { transition: none; }
+  .dock-settings-panel { animation: none; }
+}
